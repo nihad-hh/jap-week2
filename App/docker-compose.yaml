@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  proxy:
+    # image: nihad906/jap-week2-nihad-proxy:latest
+    build: 
+      context: ./proxy
+    ports:
+      - "8000:80"    
+      - "8443:443"   
+    volumes:
+      - ./proxy/certs:/etc/ssl/certs 
+    depends_on:
+      - web1
+      - web2
+    networks:
+      - web_network
+  web1:
+    # image: nihad906/jap-week2-nihad-web1:latest
+    build: 
+      context: ./web1
+    expose:
+     - "8080"   
+    networks:
+      - web_network
+  web2:
+    # image: nihad906/jap-week2-nihad-web2:latest
+    build: 
+      context: ./web2
+    expose:
+     - "9090" 
+    networks:
+      - web_network
+  db:
+    image: mariadb:latest 
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword  
+      MYSQL_DATABASE: mydatabase         
+      MYSQL_USER: user                   
+      MYSQL_PASSWORD: userpassword       
+    volumes:
+      - mariadb_data:/var/lib/mysql  
+    networks:
+      - web_network
+    
+networks:
+  web_network:
+    driver: bridge
+
+volumes:
+  mariadb_data:
+    driver: local
