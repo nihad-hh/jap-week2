@@ -10,7 +10,7 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 COPY ./certs/server-cert.crt /etc/ssl/certs/server-cert.crt
-COPY ./certs/server-cert.key /etc/ssl/certs/server-cert.key
+COPY ./certs/server-key.key /etc/ssl/certs/server-key.key
 
 # Expose only the HTTPS port 443
 EXPOSE 8000/tcp
