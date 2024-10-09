@@ -9,7 +9,8 @@ RUN rm /etc/nginx/conf.d/default.conf
 # Copy your custom Nginx config into the container
 COPY default.conf /etc/nginx/conf.d/default.conf
 
-COPY ./certs /etc/ssl/certs
+COPY ./certs/server-cert.crt /etc/ssl/certs/server-cert.crt
+COPY ./certs/server-cert.key /etc/ssl/certs/server-cert.key
 
 # Expose only the HTTPS port 443
 EXPOSE 8000/tcp

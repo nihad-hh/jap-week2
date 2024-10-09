@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web1:
+    # image: nihad906/jap-week2-nihad-web1:latest
+    build: 
+      context: ./
+    container_name: web1
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"   
+    networks:
+      - web_network
+
+networks:
+  web_network:
+    external: true
