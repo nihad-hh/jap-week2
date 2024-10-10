@@ -5,6 +5,7 @@ services:
     # image: nihad906/jap-week2-nihad-proxy:latest
     build: 
       context: ./proxy
+    container_name: proxy
     ports:
       - "8000:80"    
       - "8443:443"   
@@ -19,6 +20,7 @@ services:
     # image: nihad906/jap-week2-nihad-web1:latest
     build: 
       context: ./web1
+    container_name: web1
     expose:
      - "8080"   
     networks:
@@ -27,6 +29,7 @@ services:
     # image: nihad906/jap-week2-nihad-web2:latest
     build: 
       context: ./web2
+    container_name: web2`
     expose:
      - "9090" 
     networks:
@@ -34,6 +37,7 @@ services:
   db:
     image: mariadb:latest 
     restart: always
+    container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword  
       MYSQL_DATABASE: mydatabase         
