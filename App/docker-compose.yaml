@@ -26,10 +26,10 @@ services:
     networks:
       - web_network
   web2:
-    # image: nihad906/jap-week2-nihad-web2:latest
+    image: nihad906/jap-week2-nihad-web2:latest
     build: 
       context: ./web2
-    container_name: web2`
+    container_name: web2
     expose:
      - "9090" 
     networks:
