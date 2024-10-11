@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:alpine
 
 RUN apk --no-cache add mysql-client
 
